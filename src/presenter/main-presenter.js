@@ -45,6 +45,10 @@ export default class MainPresenter {
     this.#commentsModel = commentsModel;
   }
 
+  get films() {
+    return this.#filmsModel.films;
+  }
+
   init(){
     this.#films = [...this.#filmsModel.films];
     this.#sourcedBoardFilms = [...this.#filmsModel.films];

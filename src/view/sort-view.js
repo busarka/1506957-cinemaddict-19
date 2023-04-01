@@ -1,12 +1,12 @@
 import AbstractView from '../framework/view/abstract-view.js';
 import { SortType } from '../const/const.js';
 
-function createSortTemplate() {
+function createSortTemplate(isChecked) { /// при нажатии должно чекед
   return `
   <ul class="sort">
-  <li><a href="#" class="sort__button" data-sort-type="${SortType.DEFAULT}">Sort by default</a></li>
-  <li><a href="#" class="sort__button" data-sort-type="${SortType.DATE}"">Sort by date</a></li>
-  <li><a href="#" class="sort__button" data-sort-type="${SortType.RATING}"">Sort by rating</a></li>
+  <li><a href="#" class="sort__button ${isChecked ? 'sort__button--active' : ''}" data-sort-type="${SortType.DEFAULT}">Sort by default</a></li>
+  <li><a href="#" class="sort__button ${isChecked ? 'sort__button--active' : ''}" data-sort-type="${SortType.DATE}"">Sort by date</a></li>
+  <li><a href="#" class="sort__button ${isChecked ? 'sort__button--active' : ''}" data-sort-type="${SortType.RATING}"">Sort by rating</a></li>
 </ul>
   `;
 }
@@ -26,7 +26,6 @@ export default class SortView extends AbstractView {
   }
 
   #sortTypeChangeHandler = (evt) => {
-    // console.log('1')
     if (evt.target.tagName !== 'A') {
       return;
     }
